@@ -1,0 +1,92 @@
+{
+    "bridge": {
+        "name": "Homebridge",
+        "username": "CC:22:3D:E3:CE:30",
+        "port": 51826,
+        "pin": "031-45-154"
+    },
+    "platforms": [
+        {
+            "platform" : "yeelight",
+            "name" : "yeelight"
+        }, 
+        {
+            "platform": "MiAqaraPlatform",
+            "manage": {
+                "port": 11128,
+                "password": "107927710"
+            },
+            "gateways": {
+                "34ce00853d2d": "AA234FBD2E974864"
+            },
+            "defaultValue": {
+                "34ce00853d2d": {
+                    "Gateway_Lightbulb": {
+                        "name": "Свет шлюза",
+                        "serviceType": "Lightbulb"
+                    },
+                    "Gateway_LightSensor": {
+                        "name": "Свет"
+                    },
+                    "Gateway_Switch_JoinPermission": {
+                        "name": "Разрешение на подключение",
+                        "disable": true
+                    }
+                },
+                "158d000172032c": {
+                    "TemperatureAndHumiditySensor2_TemperatureSensor": {
+                        "name": "Температура"
+                    },
+                    "TemperatureAndHumiditySensor2_HumiditySensor": {
+                        "name": "Влажность"
+                    }
+                },
+                "158d0001881c57": {
+                    "PlugBase_Outlet_b442": {
+                        "name": "Розетка"
+                    }
+                },
+                "158d00015aac1a": {
+                    "MotionSensor_MotionSensor": {
+                        "name": "Датчик движения"
+                    }
+                },
+                "158d000122dda1": {
+                    "Global": {
+                        "disable": true 
+                    },
+                    "Button_StatelessProgrammableSwitch": {
+                        "name": "Беспроводной выключатель Mi",
+                        "disable": false
+                    },
+                    "Button_Switch_VirtualSinglePress": {
+                        "name": "Беспроводной выключатель Mi (одинарное нажатие)"
+                    },
+                    "Button_Switch_VirtualDoublePress": {
+                        "name": "Беспроводной выключатель Mi (двойное нажатие)"
+                    }
+                },
+                "158d0001a66e8a": {
+                    "Global": {
+                        "disable": true 
+                    },
+                    "Button_StatelessProgrammableSwitch": {
+                        "name": "Беспроводной выключатель Mi",
+                        "disable": false
+                    },
+                    "Button_Switch_VirtualSinglePress": {
+                        "name": "Беспроводной выключатель Mi (одинарное нажатие)"
+                    },
+                    "Button_Switch_VirtualDoublePress": {
+                        "name": "Беспроводной выключатель Mi (двойное нажатие)"
+                    }
+                },
+                "158d0001219407": {
+                    "ContactSensor_ContactSensor": {
+                        "name": "Датчик открытия"
+                    }
+                }
+            }
+        }
+    ]
+}
