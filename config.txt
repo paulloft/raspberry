@@ -1,0 +1,2 @@
+dtoverlay=pi3-act-led,activelow=on,gpio=23 
+enable_uart=1
