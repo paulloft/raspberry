@@ -1,2 +1,7 @@
+#переназначение индикатора активности на GPIO
 dtoverlay=pi3-act-led,activelow=on,gpio=23 
 enable_uart=1
+
+#включение и переназначение i2c
+dtoverlay=i2c-gpio,i2c_gpio_sda=25,i2c_gpio_scl=26
+dtparam=i2c_arm=on
