@@ -12,60 +12,64 @@ cat <<\EOF > /boot/overlays/mzdpi.dts &&
 /dts-v1/;
 /plugin/;
 
+
 / {
-    compatible = "brcm,bcm2708";
+    compatible = "brcm,bcm2835", "brcm,bcm2708", "brcm,bcm2709";
 
     fragment@0 {
-        target = <0xdeadbeef>;
-
+        target = <&spi0_pins>;
         __overlay__ {
-            pinctrl-names = "default";
-            pinctrl-0 = <0x1>;
+            brcm,pins = <37 38 39>;
+            brcm,function = <4>;     /* alt0 was <3> alt4 */
         };
     };
 
     fragment@1 {
-        target = <0xdeadbeef>;
-
-        __overlay__ {
-
-            dpi18_pins {
-                brcm,pins = <0x0 0x1 0x2 0x3 0x4 0x5 0x6 0xc 0xd 0xe 0xf 0x10 0x11 0x14 0x15 0x16 0x17 0x18>;
-                brcm,function = <0x6 0x6 0x6 0x6 0x6 0x6 0x6 0x6 0x6 0x6 0x6 0x6 0x6 0x6 0x6 0x6 0x6 0x6>;
-                brcm,pull = <0x1>;
-                linux,phandle = <0x1>;
-                phandle = <0x1>;
-            };
+        target = <&spi0_cs_pins>;
+        frag1: __overlay__ {
+            brcm,pins = <36>;
+            brcm,function = <1>; /* output */
         };
     };
 
     fragment@2 {
-        target = <&spi0_cs_pins>;
+        target = <&spidev0>;
         frag2: __overlay__ {
-            brcm,pins = < 0x08 0x07 >;
-            brcm,function = < 0x06 >;
-            phandle = < 0x0e >;
+            status = "okay";
         };
     };
 
-    __symbols__ {
-        dpi18_pins = "/fragment@1/__overlay__/dpi18_pins";
+    fragment@3 {
+        target = <&spidev1>;
+        __overlay__ {
+            status = "disabled";
+        };
     };
 
-    __fixups__ {
-        leds = "/fragment@0:target:0";
-        gpio = "/fragment@1:target:0";
+    fragment@4 {
+        target = <&spi0>;
+        frag4: __overlay__ {
+            /* needed to avoid dtc warning */
+            #address-cells = <1>;
+            #size-cells = <0>;
+            cs-gpios = <&gpio 36 1>;
+            status = "okay";
+        };
     };
 
-    __local_fixups__ {
-        fixup = "/fragment@0/__overlay__:pinctrl-0:0";
+    fragment@5 {
+        target = <&aux>;
+        __overlay__ {
+            status = "okay";
+        };
     };
 
     __overrides__ {
-        cs0_pin  = <&frag2>,"brcm,pins:0";
+        cs0_pin  = <&frag1>,"brcm,pins:0",
+               <&frag4>,"cs-gpios:4";
+        cs0_spidev = <&frag2>,"status";
     };
 };
-
 EOF
 dtc -W no-unit_address_vs_reg -I dts -O dtb -o /boot/overlays/mzdpi.dtbo /boot/overlays/mzdpi.dts
 }
