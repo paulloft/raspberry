@@ -2,7 +2,7 @@
 
 Fast install
 ```
-curl https://raw.githubusercontent.com/paulloft/raspberry/master/display/mzdpi-vga/mzdpi-vga-autoinstall-online | sudo bash -s
+curl -s https://raw.githubusercontent.com/paulloft/raspberry/master/display/mzdpi-vga/mzdpi-vga-autoinstall-online | sudo bash
 ````
 Forked from: https://github.com/tianyoujian/MZDPI
 
