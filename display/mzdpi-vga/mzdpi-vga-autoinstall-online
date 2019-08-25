@@ -134,4 +134,4 @@ echo "dpi_output_format=0x07f003" >> /boot/tmp.txt
 echo "hdmi_timings=480 0 41 20 60 640 0 5 10 10 0 0 0 60 0 32000000 1" >> /boot/tmp.txt
 
 cp /boot/tmp.txt /boot/config.txt
-echo "DONE"
+echo "DONE. Please reboot the system"
