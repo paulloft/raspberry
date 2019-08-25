@@ -2,9 +2,9 @@
 
 Fast install
 ```
-sudo curl https://raw.githubusercontent.com/paulloft/raspberry/master/display/mzdpi-vga/mzdpi-vga-autoinstall-online | sudo bash -s
+curl https://raw.githubusercontent.com/paulloft/raspberry/master/display/mzdpi-vga/mzdpi-vga-autoinstall-online | sudo bash -s
 ````
-Forked from https://github.com/tianyoujian/MZDPI
+Forked from: https://github.com/tianyoujian/MZDPI
 
 Display wiki: http://www.raspberrypiwiki.com/index.php/2.8_inch_Touch_Screen_for_Pi_zero
 
